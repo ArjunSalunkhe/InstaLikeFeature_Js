@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Like Feature</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        .cursor{
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: yellowgreen;
+            position: absolute;
+            z-index: 9;
+            transition: all cubic-bezier(0.19, 1, 0.22, 1) 1s;
+        }
+        .main{
+            width: 100%;
+            height: 100vh;
+            background-color: aqua;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card{
+            width: 25%;
+            height: 60%;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+
+        }
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: relative;
+        }
+        i{
+            position: absolute;
+            top:50%;
+            left: 50%;
+            transform: translate(-50%,-50%) scale(0);
+            opacity: 0;
+            font-size: 7vw;
+            color: #fff;
+            transition:all ease 0.4s ;
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor"></div>
+
+    <div class="main">
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1513379733131-47fc74b45fc7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fG1vZGVsfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="">
+            <i class="fa-solid fa-heart"></i>
+        </div>
+    </div>
+
+    <script>
+
+        let cur = document.querySelector(".cursor")
+
+        window.addEventListener("mousemove",(dets)=>{
+            cur.style.transform = `translate(${dets.clientX}px,${dets.clientY}px)`
+        })
+
+        let card = document.querySelector(".card");
+        let i = document.querySelector("i");
+
+        card.addEventListener("dblclick",()=>{
+            i.style.transform ='translate(-50%,-50%) scale(1)';
+            i.style.opacity = 0.8;
+
+            setTimeout(function(){
+                i.style.opacity = 0;
+            },1000)
+            setTimeout(function(){
+                i.style.transform ='translate(-50%,-50%) scale(0)';
+            },2000)
+
+        })
+        
+
+    </script>
+    
+</body>
+</html>
